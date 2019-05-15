@@ -32,12 +32,12 @@ ext {
 dependencies {
 
 
-        // ViewModel and LiveData
-        implementation "android.arch.lifecycle:extensions:$lifecycle_version"
-        // alternatively - just ViewModel
-        implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"
-        // alternatively - just LiveData
-        implementation "android.arch.lifecycle:livedata:$lifecycle_version"
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    // alternatively - just ViewModel
+    implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"
+    // alternatively - just LiveData
+    implementation "android.arch.lifecycle:livedata:$lifecycle_version"
 
 
     implementation "com.android.support:support-v4:$supportLib"
@@ -46,6 +46,7 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$firebaseVersion"
     implementation "com.google.firebase:firebase-database:$firebaseVersion"
     implementation 'com.google.firebase:firebase-firestore:17.1.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

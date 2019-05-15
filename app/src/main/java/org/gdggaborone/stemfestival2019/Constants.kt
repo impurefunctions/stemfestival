@@ -9,6 +9,7 @@ object Constants {
     var SPEAKERS = "speakers"
     var SCHEDULES = "sessions"
     var CHATS = "chats"
+    var EXHIBITORS = "exhibitors"
     var SCHEDULES_TIMES = "schedules"
 
 }

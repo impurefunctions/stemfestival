@@ -10,6 +10,10 @@
         android:id="@+id/navigation_exhibitors"
         android:icon="@drawable/ic_people_black_24dp"
         android:title="Exhibitors" />
+    <item
+        android:id="@+id/navigation_speakers"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Speakers"/>
 
     <item
         android:id="@+id/navigation_chat"

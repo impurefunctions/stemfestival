@@ -17,8 +17,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog.*
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.fragments.ChatFragment
-import org.gdggaborone.stemfestival2019.fragments.ScheduleFragment
 import org.gdggaborone.stemfestival2019.fragments.ExhibitorsFragment
+import org.gdggaborone.stemfestival2019.fragments.ScheduleFragment
+import org.gdggaborone.stemfestival2019.fragments.SpeakersFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_schedule -> fragment = ScheduleFragment()
             R.id.navigation_exhibitors -> fragment = ExhibitorsFragment()
             R.id.navigation_chat -> fragment = ChatFragment()
+            R.id.navigation_speakers -> fragment = SpeakersFragment()
         }
 
         supportFragmentManager.beginTransaction().replace(R.id.content, fragment).commit()

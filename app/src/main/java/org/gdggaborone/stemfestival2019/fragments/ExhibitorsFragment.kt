@@ -5,11 +5,18 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import com.google.firebase.database.*
+import android.widget.TextView
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_exhibitor.*
 import org.gdggaborone.stemfestival2019.Constants
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.adapters.ExhibitorAdapter
@@ -24,56 +31,54 @@ class ExhibitorsFragment : Fragment() {
     private val mList: ArrayList<ExhibitorModel> = ArrayList()
     private var exhibitorAdapter: ExhibitorAdapter? = null
     private var progressBar: ProgressBar? = null
+    private lateinit var firestoreDB: FirebaseFirestore
+    private lateinit var coming_soon: TextView
 
     init {
         // Required empty public constructor
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        //String speakerId = getArguments().getString(SPEAKER_ID_KEY);
-
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        firestoreDB = FirebaseFirestore.getInstance()
 
         val view = inflater.inflate(R.layout.fragment_exhibitor, container, false)
 
         progressBar = view.findViewById(R.id.progressBar)
 
         exhibitorAdapter = ExhibitorAdapter(context!!, mList)
+        coming_soon = view.findViewById(R.id.coming_soon_txt)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = exhibitorAdapter
+        progressBar!!.visibility = View.GONE
+        coming_soon.visibility = View.GONE
+       // passRTToFirestore()
+        loadDataFirestore()
 
-        loadData()
+
+
+
 
         // Inflate the layout for this fragment
         return view
     }
 
 
-    internal fun loadData() {
+    private fun passRTToFirestore() {
 
         val firebaseDatabase = FirebaseDatabase.getInstance()
-        val speakers = firebaseDatabase.getReference(Constants.SPEAKERS)
-        speakers.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                progressBar!!.visibility = View.GONE
-            }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                progressBar!!.visibility = View.GONE
-            }
-        })
-        speakers.addChildEventListener(object : ChildEventListener {
+        val exhibitors = firebaseDatabase.getReference(Constants.SPEAKERS)
+        exhibitors.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
-                val speakerModel = dataSnapshot.getValue(ExhibitorModel::class.java)
-                mList.add(speakerModel!!)
-                exhibitorAdapter!!.notifyDataSetChanged()
+                val exhibitorModel = dataSnapshot.getValue(ExhibitorModel::class.java)
+                firestoreDB.collection(Constants.EXHIBITORS).add(exhibitorModel!!).addOnCompleteListener{
+                    Log.d("Exhibitors", "${exhibitorModel.name} added")
+
+                }
             }
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {
@@ -92,6 +97,27 @@ class ExhibitorsFragment : Fragment() {
 
             }
         })
+
+    }
+    private fun loadDataFirestore(){
+        firestoreDB?.collection(Constants.EXHIBITORS)?.get()?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                coming_soon_txt!!.visibility = View.GONE
+                for (documentSnapshot in task.result) {
+                    val exhibitorModel = documentSnapshot.toObject(ExhibitorModel::class.java)
+                    mList.add(exhibitorModel!!)
+                    if (mList.isNotEmpty()){
+                        exhibitorAdapter!!.notifyDataSetChanged()
+                        progressBar!!.visibility = View.GONE
+                    }else{
+                        progressBar!!.visibility = View.GONE
+                        coming_soon_txt!!.visibility = View.VISIBLE
+                    }
+            }
+
+
+            }
+        }
 
     }
 

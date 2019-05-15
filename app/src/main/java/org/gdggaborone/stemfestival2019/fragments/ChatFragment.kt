@@ -40,7 +40,6 @@ class ChatFragment : Fragment(), View.OnClickListener {
     private lateinit var fab : FloatingActionButton
     private lateinit var recyclerView: RecyclerView
 
-    private var message: String? = null
     private var progressBar: ProgressBar? = null
     private lateinit var editTextString: String
 
@@ -72,7 +71,7 @@ class ChatFragment : Fragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
         progressBar = view.findViewById(R.id.progress_bar)
         progressBar!!.visibility = View.VISIBLE
-        
+
 
         recyclerView = view.findViewById(R.id.chat_recyclerview)
         fab = view.findViewById(R.id.sendFloatingActionButton)
@@ -101,7 +100,6 @@ class ChatFragment : Fragment(), View.OnClickListener {
     }
 
     private fun saveFirestoreData() {
-        val db = FirebaseFirestore.getInstance()
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
         val username = FirebaseAuth.getInstance().currentUser!!.displayName
         val guid = FirebaseAuth.getInstance().currentUser!!.providerData[0].email!!.split("@".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
@@ -111,19 +109,16 @@ class ChatFragment : Fragment(), View.OnClickListener {
         val profileImg = FirebaseAuth.getInstance().currentUser!!.photoUrl!!.toString()
         val messageModel = MessageModel(Date().toString(), username!!, uid, message, guid, profileImg)
 
-        db.collection(Constants.CHATS)
-                .add(messageModel)
-                .addOnSuccessListener {
-                    Log.d(TAG, "Message from  ${messageModel.username} delivered")
-                    recyclerView.scrollToPosition(0)
-                    closeKeyboard()
-                    inputEditText.text?.clear()
-                    messageAdapter?.notifyDataSetChanged()
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
-                    inputEditText.setText(message)
-                }
+        db?.collection(Constants.CHATS)?.add(messageModel)?.addOnSuccessListener {
+            Log.d(TAG, "Message from  ${messageModel.username} delivered")
+            recyclerView.scrollToPosition(0)
+            closeKeyboard()
+            inputEditText.text?.clear()
+            messageAdapter?.notifyDataSetChanged()
+        }?.addOnFailureListener { e ->
+            Log.w(TAG, "Error adding document", e)
+            inputEditText.setText(message)
+        }
 
 
     }
