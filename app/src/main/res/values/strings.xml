@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">STEM Festival 2019</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kess"><![CDATA[Oh hello there. Couldn\'t fit the credits anywhere else so here. Made with love by guys at GDG Gaborone -> danieldube.me and kesegotumisang.com]]></string>
+    <string name="everything_else">Oh and here\'s everything else.</string>
+    <string name="cod">About STEM festival</string>
+    <string name="logout">Logout</string>
+    <string name="todo">TODO</string>
+    <string name="schedule_not_ready">Schedule not ready yet!</string>
+</resources>

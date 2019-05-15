@@ -1,0 +1,8 @@
+pl.charmas.android.tagview
+attr tagCornerRadius
+attr tagPadding
+attr tagUppercase
+attr tagViewStyle
+style Widget
+style Widget_TagView
+styleable TagView tagCornerRadius tagPadding tagUppercase

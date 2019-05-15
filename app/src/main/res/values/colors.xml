@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2c52c7</color>
+    <color name="colorPrimaryDark">#203b8e</color>
+    <color name="colorAccent">#4093ff</color>
+
+    <color name="textPrimary">#161616</color>
+    <color name="textPrimaryInverted">#fff</color>
+    <color name="textSecondary">#7e7e7e</color>
+
+    <color name="android">#6bc250</color>
+    <color name="cloud">#3f51b5</color>
+    <color name="web">#2196f3</color>
+
+</resources>

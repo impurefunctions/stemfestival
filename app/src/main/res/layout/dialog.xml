@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:textSize="14sp"
+        android:textColor="@color/textPrimary"
+        android:padding="16dp"
+        android:autoLink="all"
+        android:text="@string/kess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textColor="@color/textPrimary"
+        android:padding="16dp"
+        android:autoLink="all"
+        android:text="@string/everything_else"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ic_exit_to_app_black_24dp"
+            android:gravity="center"
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="@color/textPrimary"
+            android:textStyle="bold" />
+
+    <TextView
+        android:textSize="14sp"
+        android:textColor="@color/textPrimary"
+        android:padding="16dp"
+        android:autoLink="all"
+        android:text="@string/cod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
