@@ -96,7 +96,7 @@ class GoogleSignInActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFa
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
         // [START_EXCLUDE silent]
-        //        showProgressDialog();
+          //      showProgressDialog()
         // [END_EXCLUDE]
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
@@ -149,6 +149,7 @@ class GoogleSignInActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFa
     private fun updateUI(user: FirebaseUser?) {
         //        hideProgressDialog();
         if (user != null) {
+            startActivity(Intent(this, MainActivity::class.java))
 
             findViewById<View>(R.id.sign_in_button).visibility = View.GONE
             findViewById<View>(R.id.sign_out_button).visibility = View.GONE
@@ -188,6 +189,6 @@ class GoogleSignInActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFa
     companion object {
 
         private const val TAG = "GoogleActivity"
-        private const val RC_SIGN_IN = 9001
+        private const val RC_SIGN_IN = 201
     }
 }

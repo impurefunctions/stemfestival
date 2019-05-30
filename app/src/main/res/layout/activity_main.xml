@@ -25,7 +25,7 @@
             <ImageView
                 android:id="@+id/profilePictureImageView"
                 android:layout_gravity="end"
-                android:padding="8dp"
+                android:contentDescription="TODO" android:padding="8dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_width="48dp"

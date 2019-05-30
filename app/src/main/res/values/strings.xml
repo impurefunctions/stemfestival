@@ -13,4 +13,8 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="logo_stem">logo stem</string>
+    <string name="sign_in">Sign In</string>
+
 </resources>

@@ -51,7 +51,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="78" />
+                                                <entry key="scalingPercent" value="76" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -64,7 +64,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Documents/stem_logo.png" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Creative Cloud Files/1x/512x512.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -124,7 +124,25 @@
         </entry>
         <entry key="vectorWizard">
           <value>
-            <PersistentState />
+            <PersistentState>
+              <option name="children">
+                <map>
+                  <entry key="vectorAssetStep">
+                    <value>
+                      <PersistentState>
+                        <option name="values">
+                          <map>
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_lab_microscope" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/app/src/main/res/drawable/lab_microscope.svg" />
+                          </map>
+                        </option>
+                      </PersistentState>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </PersistentState>
           </value>
         </entry>
       </map>

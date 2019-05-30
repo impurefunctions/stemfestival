@@ -88,7 +88,7 @@ class ChatFragment : Fragment(), View.OnClickListener {
 
         db?.collection(Constants.CHATS)?.get()?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                for (documentSnapshot in task.result) {
+                for (documentSnapshot in task.result!!) {
                     val messageModel = documentSnapshot.toObject(MessageModel::class.java)
                     messages.add(0, messageModel)
                     messageAdapter!!.notifyDataSetChanged()

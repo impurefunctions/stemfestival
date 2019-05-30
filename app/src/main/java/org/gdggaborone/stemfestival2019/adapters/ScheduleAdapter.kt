@@ -10,20 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.activities.SessionInfoActivity
+import org.gdggaborone.stemfestival2019.models.SpeakerModel
 import org.gdggaborone.stemfestival2019.models.ScheduleModel
 import org.gdggaborone.stemfestival2019.models.SessionModel
-import org.gdggaborone.stemfestival2019.models.ExhibitorModel
-
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by dan on 07/10/17.
  */
 
-class ScheduleAdapter(private val mContext: Context, private val sessionModels: ArrayList<SessionModel>, private val exhibitorModels: ArrayList<ExhibitorModel>, private val scheduleModels: ArrayList<ScheduleModel>) : RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
+class ScheduleAdapter(private val mContext: Context, private val sessionModels: ArrayList<SessionModel>, private val speakerModels: ArrayList<SpeakerModel>, private val scheduleModels: ArrayList<ScheduleModel>) : RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.session_item, parent, false))
@@ -36,7 +34,7 @@ class ScheduleAdapter(private val mContext: Context, private val sessionModels: 
         val speakerId = sessionModel.speakers!![0]
 
         val scheduleModel = scheduleModels[position]
-        val speakerModel = exhibitorModels[speakerId - 1]
+        val speakerModel = speakerModels[speakerId - 1]
 
         val tag = sessionModel.tags!![0]
         holder.tagsTextView.text = tag
@@ -87,7 +85,7 @@ class ScheduleAdapter(private val mContext: Context, private val sessionModels: 
         var languageAndComplexityTextView: TextView = itemView.findViewById(R.id.languageAndComplexityTextView)
         var tagsTextView: TextView = itemView.findViewById(R.id.tagsTextView)
         var presentationAvailableTextView: TextView = itemView.findViewById(R.id.presentationAvailableTextView)
-        var locationTextView: TextView = itemView.findViewById(R.id.locationTextView)
+        var locationTextView: TextView = itemView.findViewById(R.id.locationTV)
         var descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
         var schedulesTimes: TextView = itemView.findViewById(R.id.schedules_times)
 

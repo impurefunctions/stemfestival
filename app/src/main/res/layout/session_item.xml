@@ -8,7 +8,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:clickable="true"
-        android:foreground="?selectableItemBackground"
+        android:focusable="true" android:foreground="?selectableItemBackground"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -134,7 +134,7 @@
                     android:layout_margin="8dp"
                     android:id="@+id/person"
                     android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_person_black_24dp"
+                    android:contentDescription="TODO" app:srcCompat="@drawable/ic_person_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/locationTextView"
+                    android:id="@+id/companyAndTitle"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:layout_below="@id/speakerNameTextView"

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
 
     <ProgressBar
@@ -66,7 +67,7 @@
         android:id="@+id/sign_out_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/disconnect_button"
         app:layout_constraintEnd_toStartOf="@+id/disconnect_button"
@@ -78,8 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:text="Disconnect"
+        android:text="@string/disconnect"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/sign_in_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +90,7 @@
         android:layout_width="395dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/logo_stem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

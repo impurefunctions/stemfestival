@@ -34,7 +34,7 @@ class SpeakersFragment : Fragment() {
 
         progressBar = view.findViewById(R.id.progressBar)
 
-        speakerAdapter = SpeakerAdapter(context, mList)
+        speakerAdapter = SpeakerAdapter(this.context!!, mList)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)
@@ -52,7 +52,7 @@ class SpeakersFragment : Fragment() {
 
         db.collection(Constants.SPEAKERS).get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                for (documentSnapshot in task.result) {
+                for (documentSnapshot in task.result!!) {
                     val speakerModel = documentSnapshot.toObject(SpeakerModel::class.java)
                     Log.d("Speakers", "${speakerModel.name} added")
                     mList.add(speakerModel)

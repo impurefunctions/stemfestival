@@ -14,7 +14,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.dialog.*
+import kotlinx.android.synthetic.main.dialog.view.*
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.fragments.ChatFragment
 import org.gdggaborone.stemfestival2019.fragments.ExhibitorsFragment
@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+      //  FirebaseApp.initializeApp(this)
 
         if (FirebaseAuth.getInstance().currentUser == null) {
             //finish()
@@ -80,8 +81,9 @@ class MainActivity : AppCompatActivity() {
         val viewGroup = findViewById<ViewGroup>(R.id.container)
         val view = LayoutInflater.from(this@MainActivity).inflate(R.layout.dialog, viewGroup, false)
 
-        logout.setOnClickListener {
-            finish()
+
+        view.logout_button_d.setOnClickListener {
+           // finish()
             val intent = Intent(this@MainActivity, GoogleSignInActivity::class.java)
             intent.putExtra("logout", "zzz")
             startActivity(intent)

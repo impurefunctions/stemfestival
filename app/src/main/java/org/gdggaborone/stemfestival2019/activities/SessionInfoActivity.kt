@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
+import kotlinx.android.synthetic.main.activity_session_info.*
 import org.gdggaborone.stemfestival2019.Constants
 import org.gdggaborone.stemfestival2019.R
+import org.gdggaborone.stemfestival2019.models.SpeakerModel
 import org.gdggaborone.stemfestival2019.models.ScheduleModel
 import org.gdggaborone.stemfestival2019.models.SessionModel
-import org.gdggaborone.stemfestival2019.models.ExhibitorModel
-import kotlinx.android.synthetic.main.activity_session_info.*
 
 class SessionInfoActivity : AppCompatActivity() {
 
@@ -54,10 +52,10 @@ class SessionInfoActivity : AppCompatActivity() {
         speaker.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val speakerModel = dataSnapshot.getValue(ExhibitorModel::class.java)
+                val speakerModel = dataSnapshot.getValue(SpeakerModel::class.java)
 
                 speakerNameTextView!!.text = speakerModel!!.name
-                locationTextView!!.text = speakerModel.country
+                companyAndTitle!!.text = "${speakerModel.title}, ${speakerModel.company}"
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

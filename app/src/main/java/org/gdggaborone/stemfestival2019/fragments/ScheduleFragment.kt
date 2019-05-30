@@ -11,9 +11,9 @@ import com.google.firebase.database.*
 import org.gdggaborone.stemfestival2019.Constants
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.adapters.ScheduleAdapter
-import org.gdggaborone.stemfestival2019.models.ExhibitorModel
 import org.gdggaborone.stemfestival2019.models.ScheduleModel
 import org.gdggaborone.stemfestival2019.models.SessionModel
+import org.gdggaborone.stemfestival2019.models.SpeakerModel
 import java.util.*
 
 
@@ -23,7 +23,7 @@ import java.util.*
 class ScheduleFragment : Fragment() {
 
     private val sessionModels: ArrayList<SessionModel> = ArrayList()
-    private val exhibitorModels: ArrayList<ExhibitorModel> = ArrayList()
+    private val speakerModels: ArrayList<SpeakerModel> = ArrayList()
     private val scheduleModels: ArrayList<ScheduleModel> = ArrayList()
     private var scheduleAdapter: ScheduleAdapter? = null
     private val progressBar: ProgressBar? = null
@@ -36,8 +36,9 @@ class ScheduleFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+       // loadData()
 
-        scheduleAdapter = ScheduleAdapter(context!!, sessionModels, exhibitorModels, scheduleModels)
+        scheduleAdapter = ScheduleAdapter(context!!, sessionModels, speakerModels, scheduleModels)
 
 
         // Inflate the layout for this fragment
@@ -125,8 +126,8 @@ class ScheduleFragment : Fragment() {
 
         speakers.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
-                val speakerModel = dataSnapshot.getValue(ExhibitorModel::class.java)
-                exhibitorModels.add(speakerModel!!)
+                val speakerModel = dataSnapshot.getValue(SpeakerModel::class.java)
+                speakerModels.add(speakerModel!!)
             }
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {

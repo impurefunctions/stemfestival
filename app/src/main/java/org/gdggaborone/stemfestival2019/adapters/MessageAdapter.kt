@@ -7,19 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.google.firebase.auth.FirebaseAuth
-
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.Utils
 import org.gdggaborone.stemfestival2019.models.MessageModel
-
-import java.util.ArrayList
-import java.util.Date
-
-import com.bumptech.glide.request.RequestOptions.bitmapTransform
+import java.util.*
 
 /**
  * Created by dan on 23/06/17.
@@ -50,7 +45,8 @@ class MessageAdapter(private val mContext: Context, private val messages: ArrayL
                 .into(viewHolder.profilePictureImageView)
 
         viewHolder.usernameTextView.text = messages[i].username
-        viewHolder.timeStampTextView.text = Utils.getDate(Date(messages[i].timestamp))
+       viewHolder.timeStampTextView.text = Utils.getDate(Date(messages[i].timestamp))
+        //viewHolder.timeStampTextView.text = messages[i].timestamp
         viewHolder.messageTextView.text = messages[i].message
     }
 
