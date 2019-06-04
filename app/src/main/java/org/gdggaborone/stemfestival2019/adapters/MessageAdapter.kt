@@ -45,7 +45,9 @@ class MessageAdapter(private val mContext: Context, private val messages: ArrayL
                 .into(viewHolder.profilePictureImageView)
 
         viewHolder.usernameTextView.text = messages[i].username
-       viewHolder.timeStampTextView.text = Utils.getDate(Date(messages[i].timestamp))
+
+
+       viewHolder.timeStampTextView.text = Utils.getDate((messages[i].timestamp)?.toDate()!!)
         //viewHolder.timeStampTextView.text = messages[i].timestamp
         viewHolder.messageTextView.text = messages[i].message
     }

@@ -4,10 +4,12 @@ buildscript {
     ext.kotlin_version = '1.3.31'
     repositories {
         jcenter()
+        mavenCentral()
         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        maven { url 'https://maven.fabric.io/public' }
         google()
     }
     dependencies {
@@ -18,15 +20,19 @@ buildscript {
         classpath 'com.google.gms:google-services:4.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         //of course these need to be updated!
+        //Fabric
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 apply plugin: 'kotlin'
+//apply plugin: 'io.fabric'
 
 allprojects {
     repositories {
         jcenter()
         mavenCentral()
         maven { url 'https://maven.google.com' }
+        maven { url 'https://maven.fabric.io/public' }
     }
 }
 

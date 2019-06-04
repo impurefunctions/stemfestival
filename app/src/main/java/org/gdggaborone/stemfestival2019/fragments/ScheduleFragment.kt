@@ -36,13 +36,17 @@ class ScheduleFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-       // loadData()
+        //loadData()
+        val view = inflater.inflate(R.layout.schedule_no_data, container, false)
 
-        scheduleAdapter = ScheduleAdapter(context!!, sessionModels, speakerModels, scheduleModels)
-
+        /*scheduleAdapter = ScheduleAdapter(context!!, sessionModels, speakerModels, scheduleModels)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+*/
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.schedule_no_data, container, false)
+        return view
     }
 
     internal fun loadData() {
@@ -59,7 +63,7 @@ class ScheduleFragment : Fragment() {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         schedules.addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                progressBar!!.visibility = View.GONE
+                               // progressBar!!.visibility = View.GONE
                             }
 
                             override fun onCancelled(databaseError: DatabaseError) {

@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b9a641a466daa2686af963825dd96bfb229a9bef" />
         <activity
             android:name=".activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

@@ -15,9 +15,11 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.Query
 import org.gdggaborone.stemfestival2019.Constants
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.adapters.MessageAdapter
@@ -56,6 +58,7 @@ class ChatFragment : Fragment(), View.OnClickListener {
                 .build()
         db!!.firestoreSettings = settings
 
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -86,17 +89,21 @@ class ChatFragment : Fragment(), View.OnClickListener {
 
     private fun loadFirestoreData() {
 
-        db?.collection(Constants.CHATS)?.get()?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                for (documentSnapshot in task.result!!) {
-                    val messageModel = documentSnapshot.toObject(MessageModel::class.java)
-                    messages.add(0, messageModel)
-                    messageAdapter!!.notifyDataSetChanged()
-                    progressBar!!.visibility = View.GONE
+        db!!.collection(Constants.CHATS)
+                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
 
+                        for (documentSnapshot in task.result!!) {
+                            val messageModel = documentSnapshot.toObject(MessageModel::class.java)
+                            messages.add(0, messageModel)
+                            messageAdapter!!.notifyDataSetChanged()
+                            progressBar!!.visibility = View.GONE
+
+                        }
+                    }
                 }
-            }
-        }
     }
 
     private fun saveFirestoreData() {
@@ -107,14 +114,15 @@ class ChatFragment : Fragment(), View.OnClickListener {
         //val timestamp = snapshot.getTimestamp("created_at")
        // val date = timestamp.toDate()
         val profileImg = FirebaseAuth.getInstance().currentUser!!.photoUrl!!.toString()
-        val messageModel = MessageModel(Date().toString(), username!!, uid, message, guid, profileImg)
+        val messageModel = MessageModel(Timestamp.now(), username!!, uid, message, guid, profileImg)
 
         db?.collection(Constants.CHATS)?.add(messageModel)?.addOnSuccessListener {
             Log.d(TAG, "Message from  ${messageModel.username} delivered")
+            messageAdapter?.notifyDataSetChanged()
             recyclerView.scrollToPosition(0)
             closeKeyboard()
             inputEditText.text?.clear()
-            messageAdapter?.notifyDataSetChanged()
+
         }?.addOnFailureListener { e ->
             Log.w(TAG, "Error adding document", e)
             inputEditText.setText(message)

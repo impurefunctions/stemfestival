@@ -29,12 +29,26 @@
                     android:layout_centerInParent="true"
                     android:layout_width="36dp"
                     android:layout_height="36dp" />
+
                 <ImageView
-                    android:contentDescription="TODO"
-                    android:scaleType="centerCrop"
                     android:id="@+id/profilePictureImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="TODO"
+                    android:padding="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="8dp"
+                    android:scaleType="centerCrop" />
                 <LinearLayout
                     android:background="@drawable/image_overlay"
                     android:layout_width="match_parent"
@@ -80,7 +94,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="4dp"
-                android:text="Topic:"
+                android:text="Track:"
                 android:textColor="@color/textPrimary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -103,7 +117,7 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:background="@drawable/tag_background"
-                android:text="Design Patterns"
+                android:text="Talks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

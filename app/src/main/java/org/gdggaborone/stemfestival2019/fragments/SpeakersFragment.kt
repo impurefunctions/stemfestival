@@ -1,5 +1,6 @@
 package org.gdggaborone.stemfestival2019.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -18,13 +19,12 @@ import java.util.*
 
 class SpeakersFragment : Fragment() {
 
-    private val mList: ArrayList<SpeakerModel>
+    private val mList: ArrayList<SpeakerModel> = ArrayList()
     private var speakerAdapter: SpeakerAdapter? = null
     private var progressBar: ProgressBar? = null
 
     init {
         // Required empty public constructor
-        mList = ArrayList()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +40,7 @@ class SpeakersFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = speakerAdapter
+
 
         loadData()
 
@@ -64,5 +65,6 @@ class SpeakersFragment : Fragment() {
         }
 
     }
+
 
 }

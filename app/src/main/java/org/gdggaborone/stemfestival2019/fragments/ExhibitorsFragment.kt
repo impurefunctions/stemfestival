@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.fragment_exhibitor.*
 import org.gdggaborone.stemfestival2019.Constants
 import org.gdggaborone.stemfestival2019.R
 import org.gdggaborone.stemfestival2019.adapters.ExhibitorAdapter
-import org.gdggaborone.stemfestival2019.models.SpeakerModel
+import org.gdggaborone.stemfestival2019.models.ExhibitorModel
+import pl.charmas.android.tagview.TagView
 import java.util.*
 
 /**
@@ -23,11 +24,12 @@ import java.util.*
  */
 class ExhibitorsFragment : Fragment() {
 
-    private val mList: ArrayList<SpeakerModel> = ArrayList()
+    private val mList: ArrayList<ExhibitorModel> = ArrayList()
     private var exhibitorAdapter: ExhibitorAdapter? = null
     private var progressBar: ProgressBar? = null
     private lateinit var firestoreDB: FirebaseFirestore
     private lateinit var comingSoon: TextView
+    private  var tagsView:TagView? = null
 
     init {
         // Required empty public constructor
@@ -40,6 +42,7 @@ class ExhibitorsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_exhibitor, container, false)
 
         progressBar = view.findViewById(R.id.progressBar)
+        tagsView = view.findViewById(R.id.tagsTextView)
 
         exhibitorAdapter = ExhibitorAdapter(context!!, mList)
         comingSoon = view.findViewById(R.id.coming_soon_txt)
@@ -61,11 +64,11 @@ class ExhibitorsFragment : Fragment() {
     }
 
     private fun loadDataFirestore(){
-        firestoreDB.collection(Constants.EXHIBITORS).get().addOnCompleteListener { task ->
+        firestoreDB.collection(Constants.EXHIBITORS).get()?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 coming_soon_txt!!.visibility = View.GONE
                 for (documentSnapshot in task.result!!) {
-                    val exhibitorModel = documentSnapshot.toObject(SpeakerModel::class.java)
+                    val exhibitorModel = documentSnapshot.toObject(ExhibitorModel::class.java)
                     mList.add(exhibitorModel)
                     if (mList.isNotEmpty()){
                         exhibitorAdapter!!.notifyDataSetChanged()

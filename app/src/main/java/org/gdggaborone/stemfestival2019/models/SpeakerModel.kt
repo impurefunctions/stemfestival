@@ -11,24 +11,20 @@ class SpeakerModel : ViewModel {
 
     var id: Int = 0
     var name: String? = null
-    var gdgName: String? = null
-    var interests: String? = null
     var bio: String? = null
-    var photoUrl: String? = null
+    var photoUrl: String? = "https://firebasestorage.googleapis.com/v0/b/devfestbotswana.appspot.com/o/stem_logo.png?alt=media&token=52eb063f-b28c-4328-82c0-cc7931ca0628"
     var shortBio: String? = null
     var title: String? = null
-    var country: String? = null
+    var country: String? = ""
     var company: String? = null
     var socials: ArrayList<SocialModel>? = null
-    var tags: ArrayList<String>? = null
+    var tags: List<String>? = null
 
     constructor() {}
 
-    constructor(id: Int, name: String, gdgName: String, interests: String, bio: String, photoUrl: String, shortBio: String, title: String, country: String, company: String, socials: ArrayList<SocialModel>, tags: ArrayList<String>) {
+    constructor(id: Int, name: String,  bio: String, photoUrl: String, shortBio: String, title: String, country: String, company: String, socials: ArrayList<SocialModel>, tags: List<String>) {
         this.id = id
         this.name = name
-        this.gdgName = gdgName
-        this.interests = interests
         this.bio = bio
         this.photoUrl = photoUrl
         this.shortBio = shortBio

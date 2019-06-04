@@ -10,6 +10,8 @@ import java.util.*
 
 object Utils {
 
+    //val date: Date? = null
+
     fun getDate(date: Date): String {
         val dateTime = DateTime(date)
         return DateUtils.getRelativeTimeSpanString(dateTime.millis,

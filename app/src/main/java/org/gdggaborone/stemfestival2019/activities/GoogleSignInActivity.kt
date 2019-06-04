@@ -85,6 +85,7 @@ class GoogleSignInActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFa
             } else {
                 // Google Sign In failed, update UI appropriately
                 // [START_EXCLUDE]
+                Log.d("Login Status", result.toString())
                 updateUI(null)
                 // [END_EXCLUDE]
             }
